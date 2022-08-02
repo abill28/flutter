@@ -9,13 +9,12 @@ class SurahService {
     Uri url = Uri.parse("https://api.alquran.cloud/v1/surah");
     var res = await http.get(url);
 
-    List data = (json.decode(res.body) as Map<String, dynamic>)["data"];
-
-    // ignore: unnecessary_null_comparison
-    if (data == null || data.isEmpty) {
-      return [];
+    if (res.statusCode == 200) {
+      Surah data = surahFromJson(res.body.toString());
+      return data.data;
     } else {
-      return data.map((e) => Surah.fromJson(e)).toList();
+      print("gagal");
+      return [];
     }
   }
 }

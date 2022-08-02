@@ -36,17 +36,17 @@ class _HomeViewState extends State<HomeView> {
             return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) { 
-                  Surah surah = snapshot.data![index];
+                  Datum surah = snapshot.data![index];
                   return ListTile(
                       leading: CircleAvatar(
                         child: Text("${surah.number}"),
                       ),
                       // ignore: prefer_const_constructors, unnecessary_string_interpolations
-                      title: Text("${surah.name.transliteration.id}"),
-                      // ignore: prefer_const_constructors
-                      subtitle: Text("${surah.numberOfVerses} Ayat | ${surah.revelation.id}"),
-                      // ignore: prefer_const_constructors, unnecessary_string_interpolations
-                      trailing: Text("${surah.name.short}"),
+                      title: Text("${surah.englishName}"),
+                      // // ignore: prefer_const_constructors
+                      subtitle: Text("${surah.numberOfAyahs} Ayat"),
+                      // // ignore: prefer_const_constructors, unnecessary_string_interpolations
+                      trailing: Text("${surah.revelationType}"),
                     );
                   }
                 );
