@@ -17,12 +17,12 @@ class Surah {
 
     int code;
     String status;
-    List<Datum> data;
+    List<ListSurah> data;
 
     factory Surah.fromJson(Map<String, dynamic> json) => Surah(
         code: json["code"],
         status: json["status"],
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<ListSurah>.from(json["data"].map((x) => ListSurah.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -32,8 +32,8 @@ class Surah {
     };
 }
 
-class Datum {
-    Datum({
+class ListSurah {
+    ListSurah({
         required this.number,
         required this.name,
         required this.englishName,
@@ -49,7 +49,7 @@ class Datum {
     int numberOfAyahs;
     String revelationType;
 
-    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+    factory ListSurah.fromJson(Map<String, dynamic> json) => ListSurah(
         number: json["number"],
         name: json["name"],
         englishName: json["englishName"],

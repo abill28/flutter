@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:quran_app/model/detailSurah.dart';
 import 'package:quran_app/model/model.dart';
 import 'package:quran_app/service/service.dart';
+import 'package:quran_app/view/detailSurahView.dart';
 
 // ignore: use_key_in_widget_constructors
 class HomeView extends StatefulWidget {
@@ -36,8 +39,11 @@ class _HomeViewState extends State<HomeView> {
             return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) { 
-                  Datum surah = snapshot.data![index];
+                  ListSurah surah = snapshot.data![index];
                   return ListTile(
+                    onTap: (){
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=> DetailSurahView(idSurah: surah.number,englishName: surah.englishName,numberOfAyahs: surah.numberOfAyahs,revelationType: surah.revelationType,englishNameTranslation: surah.englishNameTranslation,)));
+                    },
                       leading: CircleAvatar(
                         child: Text("${surah.number}"),
                       ),

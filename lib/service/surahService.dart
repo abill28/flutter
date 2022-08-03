@@ -17,4 +17,18 @@ class SurahService {
       return [];
     }
   }
+
+  getDetailSurah(int idSurah) async {
+     Uri url = Uri.parse("https://api.alquran.cloud/v1/surah/${idSurah}");
+    var res = await http.get(url);
+
+    if (res.statusCode == 200) {
+      DetailSurah data = detailSurahFromJson(res.body.toString());
+      // print(data.data.ayahs);
+      return data.data.ayahs;
+    } else {
+      print("gagal");
+      return [];
+    }
+  }
 }

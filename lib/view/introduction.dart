@@ -42,7 +42,7 @@ class _IntroductionState extends State<Introduction> {
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => HomeView())),
               child: Text(
-                "Mulai",
+                "Baca Quran",
               ),
             )
           ],
