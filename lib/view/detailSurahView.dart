@@ -116,7 +116,7 @@ class _DetailSurahViewState extends State<DetailSurahView> {
                                 ),
                               ),
                             ),
-                            Text("Ayat Ayat"),
+                            Text(ayat.text),
                             SizedBox(
                               height: 30,
                             )
