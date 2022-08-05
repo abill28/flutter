@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quran_app/app/constanst/color.dart';
 import 'package:quran_app/model/detailSurah.dart';
 
 import '../service/service.dart';
@@ -44,9 +45,13 @@ class _DetailSurahViewState extends State<DetailSurahView> {
               return ListView(
                 padding: EdgeInsets.all(20),
                 children: [
-                  Card(
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                        gradient: LinearGradient(
+                            colors: [appPurpleLight1, appPurpleDark])),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(20),
                       child: Column(
                         children: [
                           Text(
@@ -70,6 +75,7 @@ class _DetailSurahViewState extends State<DetailSurahView> {
                             ' ${widget.numberOfAyahs} Ayat | ${widget.revelationType} ',
                             style: TextStyle(
                               fontSize: 16,
+                              
                             ),
                           ),
                         ],
@@ -87,6 +93,7 @@ class _DetailSurahViewState extends State<DetailSurahView> {
                       itemBuilder: (context, index) {
                         Ayah ayat = snapshot.data![index];
                         return Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Card(
                               child: Padding(
@@ -116,7 +123,12 @@ class _DetailSurahViewState extends State<DetailSurahView> {
                                 ),
                               ),
                             ),
-                            Text(ayat.text),
+                            Container(width: MediaQuery.of(context).size.width * 1, child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(ayat.text, style: TextStyle(fontSize: 23),),
+                              ],
+                            )),
                             SizedBox(
                               height: 30,
                             )
