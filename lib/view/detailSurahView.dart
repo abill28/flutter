@@ -47,7 +47,7 @@ class _DetailSurahViewState extends State<DetailSurahView> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(20),
                         gradient: LinearGradient(
                             colors: [appPurpleLight1, appPurpleDark])),
                     child: Padding(
@@ -57,26 +57,23 @@ class _DetailSurahViewState extends State<DetailSurahView> {
                           Text(
                             'SURAH ${widget.englishName.toUpperCase()}',
                             style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: appWhite),
                           ),
                           Text(
                             '( ${widget.englishNameTranslation})',
                             style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: appWhite),
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           Text(
                             ' ${widget.numberOfAyahs} Ayat | ${widget.revelationType} ',
-                            style: TextStyle(
-                              fontSize: 16,
-                              
-                            ),
+                            style: TextStyle(fontSize: 16, color: appWhite),
                           ),
                         ],
                       ),
@@ -95,7 +92,10 @@ class _DetailSurahViewState extends State<DetailSurahView> {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Card(
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: appPurpleLight2.withOpacity(0.3)),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 5, horizontal: 10),
@@ -103,15 +103,35 @@ class _DetailSurahViewState extends State<DetailSurahView> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    CircleAvatar(
-                                      child:
-                                          Text(ayat.numberInSurah.toString()),
+                                    Container(
+                                      height: 35,
+                                      width: 35,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  "../assets/images/list.png"),
+                                              fit: BoxFit.contain)),
+                                      child: Center(
+                                          child: Text(
+                                              ayat.numberInSurah.toString())),
                                     ),
                                     // Text(ayat.numberInSurah.toString()),
                                     Row(
                                       children: [
                                         IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              AlertDialog(
+                                                title: Text("BookMark"),
+                                                actions: [
+                                                  ElevatedButton(
+                                                      onPressed: () {},
+                                                      child: Text("Last Read")),
+                                                  ElevatedButton(
+                                                      onPressed: () {},
+                                                      child: Text("Bookmark"))
+                                                ],
+                                              );
+                                            },
                                             icon: Icon(
                                                 Icons.bookmark_add_outlined)),
                                         IconButton(
@@ -123,12 +143,17 @@ class _DetailSurahViewState extends State<DetailSurahView> {
                                 ),
                               ),
                             ),
-                            Container(width: MediaQuery.of(context).size.width * 1, child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(ayat.text, style: TextStyle(fontSize: 23),),
-                              ],
-                            )),
+                            Container(
+                                width: MediaQuery.of(context).size.width * 1,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      ayat.text,
+                                      style: TextStyle(fontSize: 23),
+                                    ),
+                                  ],
+                                )),
                             SizedBox(
                               height: 30,
                             )
